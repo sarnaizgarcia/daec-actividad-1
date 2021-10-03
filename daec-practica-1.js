@@ -3,12 +3,13 @@
 // REQUERIMIENTO 1
 // Realiza un programa en JavaScript que recorra un array de 10 números y calcule la media aritmética de diez números.
 // Los números deben de estar comprendidos entre el 0 y 100,
-// si se detectará algún número fuera de ese rango no se tendría en cuenta para su cálculo.
+//  si se detectará algún número fuera de ese rango no se tendría en cuenta para su cálculo.
 
 /**
- * Devuelve un array de 10 números
+ * Devuelve un array de 10 números.
+ * En cada iteración del bucle se genera un número aleatorio y se añade al array lista.
  *
- * @returns Array de números
+ * @returns Array de números.
  */
 function generarArray() {
     let lista = [];
@@ -21,6 +22,7 @@ function generarArray() {
 
 /**
  * Devuelve un número aleatorio comprendido entre 0 y 100, ambos inclusive.
+ * Con la librería Math se genera un número entre 0 y 100.
  *
  * @returns {number} Número entero entre 0 y 100.
  */
@@ -29,10 +31,11 @@ function obtenerNumeroRandom() {
 }
 
 /**
- * Devuelve el número de elementos del array que sirven para calcular la media
+ * Devuelve el número de elementos del array que sirven para calcular la media.
+ * Evalumos si cada elemento del array es menor o igual que 100 para saber si lo tenemos en cuenta para calcular la media.
  *
- * @param {Array} arrayDeNumeros Array de números
- * @returns Número de elementos del array que sirven para calcular la media
+ * @param {Array} arrayDeNumeros Array de números.
+ * @returns Número de elementos del array que sirven para calcular la media.
  */
 function obtenerDivisor(arrayDeNumeros) {
     let divisor = 0;
@@ -41,10 +44,11 @@ function obtenerDivisor(arrayDeNumeros) {
 }
 
 /**
- * Devuelve la media aritmética de los números del array entre 0 y 100
+ * Devuelve la media aritmética de los números del array entre 0 y 100.
+ * Buscamos el los elementos del array que son menores o iguales que 100 y lo dividimos por el número de elementos que cumplen esa condición.
  *
- * @param {Array} arrayDeNumeros Array de números
- * @returns Media artimética de los elementos del array entre 0 y 100
+ * @param {Array} arrayDeNumeros Array de números.
+ * @returns Media artimética de los elementos del array entre 0 y 100.
  */
 function obtenerMedia(arrayDeNumeros) {
     const divisor = obtenerDivisor(arrayDeNumeros);
@@ -56,13 +60,18 @@ const numeros = generarArray();
 const mediaAritmetica = obtenerMedia(numeros);
 
 // REQUERIMIENTO 2
-// Calcular la moda
+// Calcular la moda.
 
 /**
  * Calcula la moda de un array de números.
+ * Creamos una colección de los valores que hay en el array, solo aparece uno cada vez.
+ * Vemos cuantas veces aparece cada uno de los valores en el array y creamos para cada elemento del array original un array
+ *  que contiene el elemento y el número de veces que aparece.
+ * Ordenamos ese array, poniendo primero el elemento que más veces se repite.
+ * Buscamos otros números que se repitan el mismo número de veces y devolvemos el resultado.
  *
- * @param {Array} arrayDeNumeros Array de números
- * @returns Si la moda de los elementos de un array existe, se calcula. Si no, devuelve un mensaje diciendo que no existe
+ * @param {Array} arrayDeNumeros Array de números.
+ * @returns Si la moda de los elementos de un array existe, se calcula. Si no, devuelve un mensaje diciendo que no existe.
  */
 function calcularModa(arrayDeNumeros) {
     const setDeNumeros = new Set(arrayDeNumeros);
@@ -91,11 +100,11 @@ function calcularModa(arrayDeNumeros) {
 }
 
 /**
- * Devuelve el número de veces que un elemento aparece en un array
+ * Devuelve el número de veces que un elemento aparece en un array.
  *
- * @param {Array} array Array de números
- * @param {number} valor Número que localizar en el array
- * @returns Número de veces que un número aparece en un array
+ * @param {Array} array Array de números.
+ * @param {number} valor Número que localizar en el array.
+ * @returns Número de veces que un número aparece en un array.
  */
 function obtenerFrecuencias(array, valor) {
     return array.reduce((acumulado, numero) => (numero === valor ? acumulado + 1 : acumulado), 0);
@@ -104,13 +113,13 @@ function obtenerFrecuencias(array, valor) {
 const moda = calcularModa(numeros);
 
 // REQUERIMIENTO 3
-// Calcular la mediana
+// Calcular la mediana.
 
 /**
- * Calcula la mediana del array
+ * Calcula la mediana del array.
  *
- * @param {Array} arrayDeNumeros
- * @returns {number} Mediana de los números que forman el array
+ * @param {Array} arrayDeNumeros.
+ * @returns {number} Mediana de los números que forman el array.
  */
 function calculaMediana(arrayDeNumeros) {
     const longitudArray = arrayDeNumeros.length;
