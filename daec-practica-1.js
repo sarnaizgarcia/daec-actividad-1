@@ -32,7 +32,8 @@ function obtenerNumeroRandom() {
 
 /**
  * Devuelve el número de elementos del array que sirven para calcular la media.
- * Evalumos si cada elemento del array es menor o igual que 100 para saber si lo tenemos en cuenta para calcular la media.
+ * Evalumos si cada elemento del array es menor o igual que 100 para saber
+ *  si lo tenemos en cuenta para calcular la media.
  *
  * @param {Array} arrayDeNumeros Array de números.
  * @returns Número de elementos del array que sirven para calcular la media.
@@ -45,7 +46,8 @@ function obtenerDivisor(arrayDeNumeros) {
 
 /**
  * Devuelve la media aritmética de los números del array entre 0 y 100.
- * Buscamos el los elementos del array que son menores o iguales que 100 y lo dividimos por el número de elementos que cumplen esa condición.
+ * Buscamos el los elementos del array que son menores o iguales que 100
+ *  y lo dividimos por el número de elementos que cumplen esa condición.
  *
  * @param {Array} arrayDeNumeros Array de números.
  * @returns Media artimética de los elementos del array entre 0 y 100.
@@ -129,10 +131,9 @@ function calculaMediana(arrayDeNumeros) {
 
 function main() {
     // REQUERIMIENTO 1
-    const numeros = generarArray();
+    const numeros = [ 12, 30, 13, 13, 94, 12, 154, 17, 99, 73 ] // generarArray();
     console.log('El array sobre el que vamos a operar es:\n ', numeros);
 
-    console.log(numeros.length);
     const mediaAritmetica = obtenerMedia(numeros);
     console.log(`Media aritmética: ${mediaAritmetica}`);
 
