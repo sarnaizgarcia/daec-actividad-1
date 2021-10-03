@@ -1,5 +1,6 @@
-// REQUERIMIENTO 1
+// DESARROLLO DE APLICACIONES WEB EN ENTORNO CLIENTE - PRÁCTICA 1
 
+// REQUERIMIENTO 1
 // Realiza un programa en JavaScript que recorra un array de 10 números y calcule la media aritmética de diez números.
 // Los números deben de estar comprendidos entre el 0 y 100,
 // si se detectará algún número fuera de ese rango no se tendría en cuenta para su cálculo.
@@ -51,12 +52,18 @@ function obtenerMedia(arrayDeNumeros) {
     return arrayValido.reduce((total, cantidad) => total + cantidad) / divisor;
 }
 
-const numeros = [1, 2, 3, 4, 5, 99, 789]  // generarArray();
+const numeros = generarArray();
 const mediaAritmetica = obtenerMedia(numeros);
 
 // REQUERIMIENTO 2
 // Calcular la moda
 
+/**
+ * Calcula la moda de un array de números.
+ *
+ * @param {Array} arrayDeNumeros Array de números
+ * @returns Si la moda de los elementos de un array existe, se calcula. Si no, devuelve un mensaje diciendo que no existe
+ */
 function calcularModa(arrayDeNumeros) {
     const setDeNumeros = new Set(arrayDeNumeros);
     const arraySinDuplicados = [...setDeNumeros];
@@ -70,15 +77,31 @@ function calcularModa(arrayDeNumeros) {
 
     mapaNumeros.sort((a, b) => b[1] - a[1]);
 
+    const mapaModa = mapaNumeros.filter((elemento) => {
+        return elemento[1] === mapaNumeros[0][1]
+    });
+
     mapaModa.map((par) => moda.push(par[0]));
 
-    return moda;
-
+    if (moda !== []) {
+        return moda;
+    } else {
+        return 'La moda no existe'
+    }
 }
 
+/**
+ * Devuelve el número de veces que un elemento aparece en un array
+ *
+ * @param {Array} array Array de números
+ * @param {number} valor Número que localizar en el array
+ * @returns Número de veces que un número aparece en un array
+ */
 function obtenerFrecuencias(array, valor) {
     return array.reduce((acumulado, numero) => (numero === valor ? acumulado + 1 : acumulado), 0);
 }
+
+const moda = calcularModa(numeros);
 
 // REQUERIMIENTO 3
 // Calcular la mediana
@@ -103,5 +126,6 @@ const mediana = calculaMediana(numeros);
 
 
 console.log('El array sobre el que vamos a operar es:\n ', numeros);
-console.log(`La media aritmética es ${mediaAritmetica}`);
-console.log(`La mediana es ${mediana}`);
+console.log(`Media aritmética: ${mediaAritmetica}`);
+console.log(`Mediana: ${mediana}`);
+console.log(`Moda: ${moda}`)
