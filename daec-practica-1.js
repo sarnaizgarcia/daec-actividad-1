@@ -129,7 +129,7 @@ function calculaMediana(arrayDeNumeros) {
 
 function main() {
     // REQUERIMIENTO 1
-    const numeros = [3, 5, 4, 1, 2, 7, 8, 6, 9, 100, 101]// generarArray();
+    const numeros = generarArray();
     console.log('El array sobre el que vamos a operar es:\n ', numeros);
 
     console.log(numeros.length);
