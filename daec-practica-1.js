@@ -56,9 +56,6 @@ function obtenerMedia(arrayDeNumeros) {
     return arrayValido.reduce((total, cantidad) => total + cantidad) / divisor;
 }
 
-const numeros = generarArray();
-const mediaAritmetica = obtenerMedia(numeros);
-
 // REQUERIMIENTO 2
 // Calcular la moda.
 
@@ -92,10 +89,10 @@ function calcularModa(arrayDeNumeros) {
 
     mapaModa.map((par) => moda.push(par[0]));
 
-    if (moda !== []) {
+    if (moda !== [] && moda.length !== arrayDeNumeros.length) {
         return moda;
     } else {
-        return 'La moda no existe'
+        return 'La moda no existe';
     }
 }
 
@@ -110,8 +107,6 @@ function obtenerFrecuencias(array, valor) {
     return array.reduce((acumulado, numero) => (numero === valor ? acumulado + 1 : acumulado), 0);
 }
 
-const moda = calcularModa(numeros);
-
 // REQUERIMIENTO 3
 // Calcular la mediana.
 
@@ -123,18 +118,31 @@ const moda = calcularModa(numeros);
  */
 function calculaMediana(arrayDeNumeros) {
     const longitudArray = arrayDeNumeros.length;
-    const arrayOrdenado = arrayDeNumeros.sort();
+    const arrayOrdenado = arrayDeNumeros.sort((a, b) => a - b);
+
     if (longitudArray % 2 === 0) {
-        return arrayOrdenado.slice(longitudArray/2 - 1, longitudArray/2 + 1).reduce((a, b) => a + b)/2;
+        return arrayOrdenado.slice(longitudArray / 2 - 1, longitudArray / 2 + 1).reduce((a, b) => a + b) / 2;
     } else {
-        return arrayOrdenado.slice((longitudArray-1)/2)[0];
+        return arrayOrdenado.slice((longitudArray - 1) / 2)[0];
     }
 }
 
-const mediana = calculaMediana(numeros);
+function main() {
+    // REQUERIMIENTO 1
+    const numeros = [3, 5, 4, 1, 2, 7, 8, 6, 9, 100, 101]// generarArray();
+    console.log('El array sobre el que vamos a operar es:\n ', numeros);
 
+    console.log(numeros.length);
+    const mediaAritmetica = obtenerMedia(numeros);
+    console.log(`Media aritmética: ${mediaAritmetica}`);
 
-console.log('El array sobre el que vamos a operar es:\n ', numeros);
-console.log(`Media aritmética: ${mediaAritmetica}`);
-console.log(`Mediana: ${mediana}`);
-console.log(`Moda: ${moda}`)
+    // REQUERIMIENTO 2
+    const moda = calcularModa(numeros);
+    console.log(`Moda: ${moda}`);
+
+    // REQUERIMIENTO 3
+    const mediana = calculaMediana(numeros);
+    console.log(`Mediana: ${mediana}`)
+}
+
+main();
